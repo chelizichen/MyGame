@@ -22,6 +22,8 @@ function PLAYGAME(props:ComponentProps)
                 {
                     setTime(0)
                     clearInterval(timer)
+                    PropStartGame();
+                    alert("游戏结束")
                 }
             },1000)
         }

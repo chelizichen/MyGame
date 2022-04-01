@@ -14,11 +14,12 @@ interface circle{
 interface ComponentProps
 {
     disPatch:Dispatch<any>,
-    isStart:boolean
+    isStart:boolean,
+    core:number
 }
 function CIRCLEComponent(props:ComponentProps)
 {
-    const { disPatch,isStart } = props
+    const { disPatch,isStart,core } = props
     const [circleArray,SetCircle] = useState<circle[]>([
         {index:1,bgColor:'rgb(152, 194, 203)',isShow:false,core:'PINEAPPLE'},
         {index:2,bgColor:'rgb(152, 194, 203)',isShow:false,core:'STRAWBERRY'},
@@ -48,21 +49,23 @@ function CIRCLEComponent(props:ComponentProps)
         console.log('水果盘被改变了');
     },[circleArray])
 
-    function randomFruit()
+    // 重新刷新一个
+    function randomFruit(index?:number)
     {
-        let randomIndex = Math.floor(Math.random()*9)
         let newArray:typeof circleArray = deepCopy(circleArray)
-        newArray[randomIndex-1].isShow = true;
+        if(index !== undefined)
+        {
+            newArray[index - 1].isShow = false
+        }
+        let randomIndex = Math.floor(Math.random()*9)
+        newArray[randomIndex].isShow = true;
         SetCircle(newArray)
-    }   
-
+    } 
+    // 点击消失一个 重新创建一个
     function clickFruit(index:number,coreType:CORE)
     {
-        const newCirlce = deepCopy(circleArray)
-        newCirlce[index-1].isShow = false
-        SetCircle(newCirlce)
-        randomFruit()
-        if(isStart)
+        randomFruit(index)
+        if(isStart === true)
         {
             switch(coreType)
             {
@@ -75,6 +78,10 @@ function CIRCLEComponent(props:ComponentProps)
                 default:
                     break;
             }
+        }
+        else if(core > 0 && isStart === false)
+        {
+            alert("已经结束了")
         }
         else
         {

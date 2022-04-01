@@ -14,7 +14,7 @@ function Mole()
         <div>
             <div className="core"> 分数 {core} </div>
             <PLAYGAME PropStartGame={()=>StartGame()}/>
-            <CIRCLEComponent disPatch={dispatch} isStart={start}/>
+            <CIRCLEComponent disPatch={dispatch} isStart={start} core={core as number}/>
         </div>
     )
 }
