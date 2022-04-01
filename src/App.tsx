@@ -11,8 +11,8 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <div className="navLink">
-          <NavLink to='Home' className={ ({isActive}) =>'defaultStyle'  + (isActive ?' activeStyle':'')} >Home</NavLink>
-          <NavLink to='Play' className={ ({isActive}) =>'defaultStyle'  + (isActive ?' activeStyle':'')} >Play</NavLink>
+          <NavLink to='Home' className={ ({isActive}) =>'defaultStyle'  + (isActive ?' activeStyle':'')} >介绍</NavLink>
+          <NavLink to='Play' className={ ({isActive}) =>'defaultStyle'  + (isActive ?' activeStyle':'')} >普通模式</NavLink>
           <NavLink to='Mole' className={ ({isActive}) =>'defaultStyle'  + (isActive ?' activeStyle':'')} >打地鼠</NavLink>
         </div>
         <Routes>

@@ -1,0 +1,29 @@
+.home
+{
+    width: 400px;
+    height: 400px;
+    margin: auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 30%;
+    bottom: 0;
+    text-align: center;
+}
+.home :nth-child(3)
+{
+    color: blueviolet;
+    margin-top: 20px;
+}
+.text
+{
+    width: 100%;
+    height: 100%;
+    transition: all 2s;
+    margin: auto;
+    position: absolute;
+    /* left: 0; */
+    right: 0;
+    top: 20%;
+    bottom: 0;
+}
