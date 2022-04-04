@@ -1,8 +1,11 @@
 import '../index.css'
 import pic1 from '../../../assets/1.png'
 import pic2 from '../../../assets/2.png'
-import { Dispatch, useEffect, useReducer, useState } from 'react';
+import { Dispatch, useEffect, useReducer, useRef, useState } from 'react';
 import { deepCopy } from '../../../func/deepCopy';
+import Good from '../../../assets/mp3/good.mp3'
+
+// import {AudioComponent} from './audio'
 type CORE = 'STRAWBERRY'|'PINEAPPLE'
 interface circle{
     index:number,
@@ -20,6 +23,7 @@ interface ComponentProps
 function CIRCLEComponent(props:ComponentProps)
 {
     const { disPatch,isStart,core } = props
+    const Mp3Ref = useRef<HTMLAudioElement>({} as HTMLAudioElement)
     const [circleArray,SetCircle] = useState<circle[]>([
         {index:1,bgColor:'rgb(152, 194, 203)',isShow:false,core:'PINEAPPLE'},
         {index:2,bgColor:'rgb(152, 194, 203)',isShow:false,core:'STRAWBERRY'},
@@ -67,6 +71,7 @@ function CIRCLEComponent(props:ComponentProps)
         randomFruit(index)
         if(isStart === true)
         {
+            Mp3Ref.current.play()
             switch(coreType)
             {
                 case"PINEAPPLE":
@@ -93,6 +98,8 @@ function CIRCLEComponent(props:ComponentProps)
         <>
             <div className="bg">
                 {/* 内容层 */}
+                {/* <AudioComponent good={good}/> */}
+                <audio controls ref={Mp3Ref} src={Good} className="mp3"></audio>
                 <div className="content">
                     {
                         circleArray.map(el=>{
